@@ -102,6 +102,11 @@
   height: 100vh;
 }
     </style>
+
+    <?php
+      session_start();
+    ?>
+
 </head>
 <body class="bg-body-tertiary" cz-shortcut-listen="true">
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
@@ -153,14 +158,14 @@
 <main class="d-flex grid-container" style="height: 100vh;">
 
     <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px; height: 100%; position: fixed">
-        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+        <a href="VerMensalistas.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
           <svg class="bi pe-none me-2" width="40" height="30"><use xlink:href="#bootstrap"></use></svg>
-          <span class="fs-4">Sidebar</span>
+          <span class="fs-4">Mensalista</span>
         </a>
         <hr>
         <ul class="nav nav-pills flex-column mb-auto">
           <li class="nav-item">
-            <a href="#" class="nav-link active" aria-current="page">
+            <a href="../index.html" class="nav-link active" aria-current="page">
               <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
               Home
             </a>
@@ -211,28 +216,27 @@
   <main>
 
 
-    <div class="d-flex" style="--bs-gutter-x: 0;">
-        <span class="d-flex justify-content-center align-items-center rounded-pill bg-primary" style="width: 180px; height: 40px;">
-            <img class="rounded-circle me-1" width="24" height="24" src="https://github.com/mdo.png" alt="">Primary
-            </span>
-        <div class="d-flex justify-content-center align-items-center rounded-pill bg-primary" style="width: 180px; height: 40px;">
+    <div class="card-header d-flex align-items-center" style="--bs-gutter-x: 0; position: fixed">
+        <a href="VerFuncionarios.php"><div class="d-flex justify-content-center align-items-center rounded-pill bg-primary" style="width: 180px; height: 40px;">
             <div class="btn btn-primary ms-3">Funcionarios</div>
             <div class="me-2">
                 <img src="https://cdn-icons-png.flaticon.com/512/5452/5452895.png" alt="Ícone Funcionários" height="30">
             </div>
-        </div>
-        <div class="d-flex justify-content-center align-items-center rounded-pill bg-primary" style="width: 180px; height: 40px;">
-            <div>Entrada e Saída</div>
+        </div></a>
+
+        <a href="VerEntradaeSaida.php"><div class="d-flex justify-content-center align-items-center rounded-pill bg-primary" style="width: 190px; height: 40px;">
+            <div class="btn btn-primary ms-3">Entrada e Saída</div>
             <div class="me-2">
                 <img src="https://cdn-icons-png.flaticon.com/512/2937/2937390.png" alt="Ícone Entrada e Saída" height="30">
             </div>
-        </div>
-        <div class="d-flex justify-content-center align-items-center rounded-pill bg-primary" style="width: 180px; height: 40px;">
+        </div></a>
+
+        <a href="VerUsuario.php"><div class="d-flex justify-content-center align-items-center rounded-pill bg-primary" style="width: 180px; height: 40px;">
             <div class="btn btn-primary ms-3">Usuário</div>
             <div class="me-2">
                 <img src="https://cdn-icons-png.flaticon.com/512/2625/2625981.png" alt="Ícone Usuário" height="30">
             </div>
-        </div>
+        </div></a>
     </div>
 
     <div class="py-5 text-center"></div>
@@ -294,7 +298,7 @@
             <div class="col-12">
             <!--Nome-->
               <label for="nome" class="form-label">Nome</label>
-              <input type="text" class="form-control" id="nome" name="nome" placeholder="seu nome" value="" required="">
+              <input type="text" class="form-control" id="nome" name="nome" placeholder="nome" value="" required="">
               
               <div class="invalid-feedback">
               É necessário um nome válido.
@@ -304,7 +308,7 @@
 
             <div class="col-6">
              <!--data-->
-              <label for="username" class="form-label">Data de Nascimento</label>
+              <label for="dtNascimento" class="form-label">Data de Nascimento</label>
               <div class="input-group has-validation">
                 <input type="date" class="form-control" id="dtNascimento" name="dtNascimento" placeholder="00/00/0000" required="">
               
@@ -315,7 +319,7 @@
             </div>
             <div class="col-6">
               <!--telefone-->
-            <label for="username" class="form-label">Telefone</label>
+            <label for="telefone" class="form-label">Telefone</label>
               <div class="input-group has-validation">
                 <span class="input-group-text">+55</span>
                 <input type="text" class="form-control" id="telefone" name="telefone" placeholder="11 0000000" required="">
@@ -329,7 +333,7 @@
             <div class="col-12">
               <!--Email-->
             <label for="email" class="form-label">Email <span class="text-body-secondary">(Optional)</span></label>
-              <input type="email" class="form-control" id="email" placeholder="you@example.com">
+              <input type="email" class="form-control" id="email" name="email" placeholder="you@example.com">
               
               <div class="invalid-feedback">
               Insira um endereço de e-mail válido para atualizações.
@@ -337,27 +341,31 @@
             </div>
 
             <div class="col-12">
-              <label for="address" class="form-label">Endereço</label>
-              <input type="text" class="form-control" id="address" placeholder="1234 Main St" required="">
+
+              <label for="endereco" class="form-label">Endereço</label>
+              <input type="text" class="form-control" id="endereco" name="endereco" placeholder="1234 Main St" required="">
+              
               <div class="invalid-feedback">
               Por favor, insira seu endereço.
               </div>
             </div>
 
             <div class="col-md-5">
-              <label for="country" class="form-label">Pais</label>
-              <select class="form-select" id="country" required="">
+
+              <label for="pais" class="form-label">Pais</label>
+              <select class="form-select" id="pais" name="pais" >
                 <option value="">Choose...</option>
                 <option>United States</option>
               </select>
+              
               <div class="invalid-feedback">
                 Por favor coloque um pais valido.
               </div>
             </div>
 
             <div class="col-md-4">
-              <label for="state" class="form-label">Estado</label>
-              <select class="form-select" id="state" required="">
+              <label for="estado" class="form-label">Estado</label>
+              <select class="form-select" id="estado" name="estado" >
                 <option value="">Choose...</option>
                 <option>California</option>
               </select>
@@ -367,8 +375,8 @@
             </div>
 
             <div class="col-md-3">
-              <label for="zip" class="form-label">CEP</label>
-              <input type="text" class="form-control" id="zip" placeholder="" required="">
+              <label for="cep" class="form-label">CEP</label>
+              <input type="text" class="form-control" id="cep" name="cep" placeholder="" >
               <div class="invalid-feedback">
                 Zip code required.
               </div>
@@ -385,24 +393,24 @@
             
 
             <div class="col-md-5">
-              <label for="country" class="form-label">Carro</label>
-              <input type="text" class="form-control" id="carro" placeholder="" required="">
+              <label for="carro" class="form-label">Carro</label>
+              <input type="text" class="form-control" id="carro" name="carro" placeholder="" required="">
               <div class="invalid-feedback">
                 Por favor coloque um pais valido.
               </div>
             </div>
 
             <div class="col-md-4">
-              <label for="state" class="form-label">Placa</label>
-              <input type="text" class="form-control" id="placa" placeholder="" required="">
+              <label for="placa" class="form-label">Placa</label>
+              <input type="text" class="form-control" id="placa" name="placa" placeholder="" required="">
               <div class="invalid-feedback">
                 Please provide a valid state.
               </div>
             </div>
 
             <div class="col-md-3">
-              <label for="zip" class="form-label">Cor</label>
-              <input type="text" class="form-control" id="cor" placeholder="" required="">
+              <label for="cor" class="form-label">Cor</label>
+              <input type="text" class="form-control" id="cor" name="cor" placeholder="" required="">
               <div class="invalid-feedback">
                 Zip code required.
               </div>
@@ -417,15 +425,15 @@
 
           <div class="my-3">
             <div class="form-check">
-              <input id="credit" name="paymentMethod" type="radio" class="form-check-input" checked="" required="">
-              <label class="form-check-label" for="credit">Cartao de credito</label>
+              <input id="credito" name="paymentMethod" type="radio" class="form-check-input" checked="">
+              <label class="form-check-label" for="credito">Cartao de credito</label>
             </div>
             <div class="form-check">
-              <input id="debit" name="paymentMethod" type="radio" class="form-check-input" required="">
-              <label class="form-check-label" for="debit">Cartao de debido</label>
+              <input id="debido" name="paymentMethod" type="radio" class="form-check-input">
+              <label class="form-check-label" for="debido">Cartao de debido</label>
             </div>
             <div class="form-check">
-              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input" required="">
+              <input id="paypal" name="paymentMethod" type="radio" class="form-check-input">
               <label class="form-check-label" for="paypal">PayPal</label>
             </div>
           </div>
@@ -433,56 +441,51 @@
           <div class="row gy-3">
             <div class="col-md-6">
               <label for="cc-name" class="form-label">Nome do Cartao</label>
-              <input type="text" class="form-control" id="cc-name" placeholder="" required="">
+              <input type="text" class="form-control" id="cc-name" placeholder="">
               <small class="text-body-secondary">Full name as displayed on card</small>
               <div class="invalid-feedback">
-                Name on card is required
+                Name on card is 
               </div>
             </div>
 
             <div class="col-md-6">
               <label for="cc-number" class="form-label">Numero do Cartao</label>
-              <input type="text" class="form-control" id="cc-number" placeholder="" required="">
+              <input type="text" class="form-control" id="cc-number" placeholder="">
               <div class="invalid-feedback">
-                Credit card number is required
+                Credit card number is 
               </div>
             </div>
 
             <div class="col-md-3">
               <label for="cc-expiration" class="form-label">Expiraçao</label>
-              <input type="text" class="form-control" id="cc-expiration" placeholder="" required="">
+              <input type="text" class="form-control" id="cc-expiration" placeholder="">
               <div class="invalid-feedback">
-                Expiration date required
+                Expiration date 
               </div>
             </div>
 
             <div class="col-md-3">
               <label for="cc-cvv" class="form-label">CVV</label>
-              <input type="text" class="form-control" id="cc-cvv" placeholder="" required="">
+              <input type="text" class="form-control" id="cc-cvv" placeholder="">
               <div class="invalid-feedback">
-                Security code required
+                Security code 
               </div>
             </div>
           </div>
 
           <hr class="my-4">
 
-          <button class="w-100 btn btn-primary btn-lg" type="submit">Continue to checkout
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Cadastrar
           <?php
-                session_start();
-                try{ 
-                    $_SESSION['nome']   = $_POST['nome'];
+                    $_SESSION['nome']         = $_POST['nome'];
                     $_SESSION['dtNascimento'] = $_POST['dtNascimento'];
-                    $_SESSION['autor']  = $_POST['autor'];
-                    $_SESSION['edicao'] = $_POST['edicao'];
-                    $_SESSION['dtLancamento'] = $_POST['dtLancamento'];
-                    $_SESSION['quantidade']   = $_POST['quantidade'];
-                    $_SESSION['precoUnitario'] = $_POST['precoUnitario'];
-                    $_SESSION['precoTotal']    = $_POST['precoTotal'];
+                    $_SESSION['telefone']     = $_POST['telefone'];
+                    $_SESSION['email']        = $_POST['email'];
+                    $_SESSION['endereco']     = $_POST['endereco'];
+                    $_SESSION['carro']        = $_POST['carro'];
+                    $_SESSION['placa']        = $_POST['placa'];
+                    $_SESSION['cor']          = $_POST['cor'];
                     
-                }catch(Exception $erro){
-                    echo $erro;
-                }//fim do try_catch
             ?>
           </button>
         </form>

@@ -95,12 +95,15 @@
         }
     </style>
 
+    <?php
+        session_start();
+    ?>
 
     <!-- Custom styles for this template -->
     <link href="sign-in.css" rel="stylesheet">
 </head>
 
-<body class="d-flex align-items-center py-4 bg-body-tertiary" cz-shortcut-listen="true">
+<body>
     <!--botao dark-->
     <svg xmlns="http://www.w3.org/2000/svg" class="d-none">
         <symbol id="check2" viewBox="0 0 16 16">
@@ -125,7 +128,6 @@
             </path>
         </symbol>
     </svg>
-    
 
     <div class="dropdown position-fixed bottom-0 end-0 mb-3 me-3 bd-mode-toggle">
         <button class="btn btn-bd-primary py-2 dropdown-toggle d-flex align-items-center" id="bd-theme" type="button"
@@ -176,43 +178,196 @@
     </div>
     <!--fim botao dark-->
 
-    <!--caixa de login-->
-    <main class="form-signin w-100 m-auto">
-        <form>
-            <h1 class="h3 mb-3 fw-normal">Faça login</h1>
+    <!--barra lateral-->
+    <main class="d-flex" style="height: 100%;">
 
-            <div class="form-floating">
-                <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com">
-                <label for="floatingInput">Codigo de login</label>
+        <div class="d-flex flex-column flex-shrink-0 p-3 bg-body-tertiary" style="width: 280px;">
+            <a href="VerEntradaeSaida.php" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto link-body-emphasis text-decoration-none">
+              <svg class="bi pe-none me-2" width="40" height="32"><use xlink:href="#bootstrap"></use></svg>
+              <span class="fs-4">Entrada e Saida</span>
+            </a>
+            <hr>
+            <ul class="nav nav-pills flex-column mb-auto">
+              <li class="nav-item">
+                <a href="../index.php" class="nav-link active" aria-current="page">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#home"></use></svg>
+                  Home
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#speedometer2"></use></svg>
+                  Dashboard
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#table"></use></svg>
+                  Orders
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#grid"></use></svg>
+                  Products
+                </a>
+              </li>
+              <li>
+                <a href="#" class="nav-link link-body-emphasis">
+                  <svg class="bi pe-none me-2" width="16" height="16"><use xlink:href="#people-circle"></use></svg>
+                  Customers
+                </a>
+              </li>
+            </ul>
+            <hr>
+            <div class="dropdown">
+              <a href="#" class="d-flex align-items-center link-body-emphasis text-decoration-none dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">
+                <img src="https://github.com/mdo.png" alt="" width="32" height="32" class="rounded-circle me-2">
+                <strong>usuario</strong>
+              </a>
+              <ul class="dropdown-menu text-small shadow">
+                <li><a class="dropdown-item" href="#">New project...</a></li>
+                <li><a class="dropdown-item" href="#">Settings</a></li>
+                <li><a class="dropdown-item" href="#">Profile</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="../index.html">Sign out</a></li>
+              </ul>
             </div>
-            <div class="form-floating">
-                <input type="password" class="form-control" id="floatingPassword" placeholder="Password">
-                <label for="floatingPassword">Senha</label>
-            </div>
+        </div>
+        <!--fim barra lateral-->
 
-            <div class="form-check text-start my-3" style="--bs-gap: .25rem 1rem;">
-                <div class="d-flex container text-center">
-                      <input class="form-check-input" type="checkbox" value="remember-me" id="flexCheckDefault">
-                      <div class="col-7">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            lembre de mim
-                        </label>
-                      </div>
-                      <div class="col">
-                        <div>
-                            <a href="#" class="txt1">
-                                Esqueceu?
-                            </a>
+        <!--início conteúdo-->
+        <div class="col"></div>
+            
+            <div class="row col-9 py-3">
+                <!--header-->
+                <div class="card-header d-flex align-items-center" style="--bs-gutter-x: 0;">
+                    <a href="VerMensalistas.php"><div class="d-flex justify-content-center align-items-center rounded-pill bg-primary" style="width: 180px; height: 40px;">
+                        <div class="btn btn-primary ms-3">Mensalista</div>
+                        <div class="me-2">
+                            <img src="https://github.com/mdo.png" class="rounded-circle me-1" width="24" height="24"  alt="icone de usuario">
                         </div>
-                      </div>
-                  </div>
-                
+                    </div></a>
+                    
+                    <a href="VerFuncionarios.php"><div class="d-flex justify-content-center align-items-center rounded-pill bg-primary" style="width: 180px; height: 40px;">
+                        <div class="btn btn-primary ms-3">Funcionarios</div>
+                        <div class="me-2">
+                            <img src="https://cdn-icons-png.flaticon.com/512/5452/5452895.png" alt="Ícone Funcionários" height="30">
+                        </div>
+                    </div></a>
+
+                    
+
+                    <a href="VerUsuario.php"><div class="d-flex justify-content-center align-items-center rounded-pill bg-primary" style="width: 180px; height: 40px;">
+                        <div class="btn btn-primary ms-3">Usuário</div>
+                        <div class="me-2">
+                            <img src="https://cdn-icons-png.flaticon.com/512/2625/2625981.png" alt="Ícone Usuário" height="30">
+                        </div>
+                    </div></a>
+                </div>
+
+                <div class="card shadow" style="height: 85%; --bs-gutter-x: 0;">
+                    <div class="card-header d-flex justify-content-between align-items-center">
+                        <div>
+                        <svg width="42" height="48" viewBox="0 0 42 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.6667 3.16666L11.1938 1.69374L12.6667 0.220825L14.1396 1.69374L12.6667 3.16666ZM14.75 34.4167C14.75 34.9692 14.5305 35.4991 14.1398 35.8898C13.7491 36.2805 13.2192 36.5 12.6667 36.5C12.1141 36.5 11.5842 36.2805 11.1935 35.8898C10.8028 35.4991 10.5833 34.9692 10.5833 34.4167H14.75ZM0.7771 12.1104L11.1938 1.69374L14.1396 4.63958L3.72293 15.0562L0.7771 12.1104ZM14.1396 1.69374L24.5563 12.1104L21.6104 15.0562L11.1938 4.63958L14.1396 1.69374ZM14.75 3.16666V34.4167H10.5833V3.16666H14.75ZM29.3333 44.8333L27.8604 46.3062L29.3333 47.7792L30.8063 46.3062L29.3333 44.8333ZM31.4167 13.5833C31.4167 13.0308 31.1972 12.5009 30.8065 12.1102C30.4158 11.7195 29.8859 11.5 29.3333 11.5C28.7808 11.5 28.2509 11.7195 27.8602 12.1102C27.4695 12.5009 27.25 13.0308 27.25 13.5833H31.4167ZM17.4438 35.8896L27.8604 46.3062L30.8063 43.3604L20.3896 32.9437L17.4438 35.8896ZM30.8063 46.3062L41.2229 35.8896L38.2771 32.9437L27.8604 43.3604L30.8063 46.3062ZM31.4167 44.8333V13.5833H27.25V44.8333H31.4167Z" fill="black"/>
+                        </svg>
+
+                            <span class="ms-2">Registros</span>
+                        </div>
+                        <div class="d-flex align-items-center">
+                            <button class="btn btn-outline-secondary me-2">Preencher</button>
+                            <button class="btn btn-outline-secondary me-2">Título</button>
+                            <button class="btn btn-outline-secondary">↓</button>
+                            <a href="PHP/ControllerMensalista.php"><button class="btn btn-primary ms-3">Adicionar</button></a>
+                        </div>
+                        
+                    </div>
+                    <div class="card-body">
+                        <div class="input-group mb-3">
+                            <span class="input-group-text" id="basic-addon1"><i class="fas fa-search"></i></span>
+                            <input type="text" class="form-control" placeholder="Procurar por nome..." aria-label="Procurar por nome..." aria-describedby="basic-addon1">
+                            <div class="container" style="width:300px">
+                                <div class="row">
+                                    <div class="col-9">.col-9</div>
+                                    <div class="col-4">.col-4<br>Since 9 + 4 = 13 &gt; 12, this 4-column-wide div gets wrapped onto a new line as one contiguous unit.</div>
+                                    <div class="col-6">.col-6<br>Subsequent columns continue along the new line.</div>
+                                </div>
+                            </div>
+                        </div>
+                        <table class="table table-hover">
+                            <thead>
+                                <tr>
+                                    <th scope="col">Nome</th>
+                                    <th scope="col">Endereço</th>
+                                    <th scope="col">Telefone</th>
+                                    <th scope="col">Data</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Carro</th>
+                                    <th scope="col">Placa</th>
+                                    <th scope="col">Cor</th>
+                                    <th scope="col"></th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <th scope="row">Helena Hills</th>
+                                    <td>Endereço</td>
+                                    <td>119999999</td>
+                                    <td>00/00/0000</td>
+                                    <td>name@domain.com</td>
+                                    <td>MoledoMarca</td>
+                                    <td>EST1E19</td>
+                                    <td>Azul</td>
+                                    <td><button class="btn btn-primary"><i class="fas fa-edit"></i></button></td>
+                                </tr>
+                                <tr>
+                                    <th>
+                                        <?php
+                                            echo $_SESSION['nome']   
+                                        ?>
+                                            </th>
+                                    <td>
+                                        <?php
+                                            echo $_SESSION['telefone']
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            echo $_SESSION['telefone']
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            echo $_SESSION['dtNascimento']
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            echo $_SESSION['carro']
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            echo $_SESSION['placa']
+                                        ?>
+                                    </td>
+                                    <td>
+                                        <?php
+                                            echo $_SESSION['cor']
+                                        ?>
+                                    </td>
+                                    <td><button class="btn btn-primary"><i class="fas fa-edit"></i></button></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
-        </form>
-        <a href="PHP/VerMensalistas.php"><button class="btn btn-primary w-100 py-2">Entrar</button></a>
-        <p class="mt-5 mb-3 text-body-secondary">© 2017–2024</p>
+        </div>
+        <div class="col"></div>
+        <!--fim conteúdo-->
     </main>
-    <!--fim caixa d login-->
 
 
     <!--javascript do botao-->
